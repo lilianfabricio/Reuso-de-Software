@@ -1,0 +1,189 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>LM Vinis: Tesouros da Música</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" href="assets/css/main.css" />
+<link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
+</head>
+
+<body>
+  <!-- Header -->
+  <header id="header">
+      <a href="inicial.html" class="logo"><strong>LM Vinis</strong></a>
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+          <div class="container">
+              <div class="collapse navbar-collapse" id="navbarResponsive">
+                  <ul class="navbar-nav ml-auto">
+                      <li class="nav-item active">
+                          <a class="nav-link" href="carrinho.html">Carrinho de Compras</a>
+                          <a href="#menu">Menu</a>
+                      </li>
+                  </ul>
+              </div>
+          </div>
+      </nav>
+  </header>
+</body>
+
+
+
+<!-- Nav  -->
+<nav id="menu">
+<ul class="links"><center><b>Ainda não possui uma conta?</b> <a href="cadastro.html"> Cadastre-se!</a><br>
+<a href="login.html">Login</a><br>
+<b><a href="favoritos.html">Meus Favoritos</a></b><br>
+<b><a href="pedidos.html">Meus Pedidos</a></b></center><br>
+<br>
+<li><a href="inicial.html#1">Novidades</a></li>
+<li><a href="inicial.html#2">CDs Disponíveis</a></li>
+<li><a href="inicial.html#3">Vinis Disponíveis</a></li>
+
+</ul>
+</nav>
+<!-- Nav  -->
+<style>
+  #featured {
+      display: flex;
+      flex-wrap: wrap;
+  }
+  
+  .cart-item img {
+  max-width: 100px;
+  height: auto;
+  }
+  </style>
+		
+<!-- NOME -->
+<center><br><br><div class="title">LM Vinis</div><BR></center>
+<!-- NOME -->
+
+<main>
+  <table>
+    <thead>
+      <tr>
+        <th>Produto</th>
+        <th>Preço</th>
+        <th>Quantidade</th>
+        <th>Subtotal</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          <div class="cart-item">
+            <img src="https://www.londoncalling.com.br/imagens/produtos/NACLNDC2022.jpg" alt="Produto">
+            <div>
+              <h2>Creedence Clearwater Revival - Cosmos Factory</h2>
+            </div>
+          </div>
+        </td>
+        <td>R$ 119,90</td>
+        <td>
+          <button class="btn-quantity" onclick="decreaseQuantity(1)">-</button>
+          <span id="quantity-1">1</span>
+          <button class="btn-quantity" onclick="increaseQuantity(1)">+</button>
+        </td>
+        <td>R$ 119,90</td>
+      </tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <td colspan="3">Total:</td>
+        <td>R$ 119,90</td>
+      </tr>
+    </tfoot>
+  </table>
+  <button class="btn-checkout">Finalizar compra</button>
+</main>
+
+
+
+<!-- Footer -->
+<footer id="footer">
+    
+    <div class="copyright">
+    &copy; TODOS OS DIREITOS RESERVADOS
+    </div>
+</footer>
+
+
+<!-- Scripts -->
+
+<script>
+  // Função para carregar os itens do carrinho do localStorage
+  function loadCartItems() {
+    var cartItems = JSON.parse(localStorage.getItem('produto'));
+    console.log('Itens do carrinho:', cartItems);
+
+    if (cartItems && Array.isArray(cartItems)) {
+        console.log('A função loadCartItems está sendo chamada.');
+        var cartItemsContainer = document.getElementById('cart-items');
+        var total = 0;
+
+        cartItems.forEach(function(produto, index) {
+            var row = document.createElement('tr');
+            var quantityId = 'quantity-' + (index + 1);
+            var subtotalId = 'subtotal-' + (index + 1);
+
+            row.innerHTML = `
+                <td>
+                    <div class="cart-item">
+                        <img src="${produto.imagem}" alt="${produto.nome}">
+                        <div>
+                            <p>${produto.nome}</p>
+                        </div>
+                    </div>
+                </td>
+                <td>R$ ${produto.preco}</td>
+                <td>
+                    <button class="btn-quantity" onclick="decreaseQuantity(${index})">-</button>
+                    <span id="${quantityId}">1</span>
+                    <button class="btn-quantity" onclick="increaseQuantity(${index})">+</button>
+                </td>
+                <td id="${subtotalId}">R$ ${produto.preco}</td>
+            `;
+
+            cartItemsContainer.appendChild(row);
+
+            // Calcular subtotal
+            total += parseFloat(produto.preco.replace('R$ ', ''));
+            console.log('Item do carrinho adicionado:', produto);
+        });
+
+        document.getElementById('total').textContent = 'R$ ' + total.toFixed(2);
+    }
+}
+
+// Função para calcular o total dos itens no carrinho
+function calculateTotal() {
+    var cartItems = JSON.parse(localStorage.getItem('produto'));
+    var total = 0;
+
+    if (cartItems && Array.isArray(cartItems)) {
+        cartItems.forEach(function(produto) {
+            total += parseFloat(produto.preco.replace('R$ ', ''));
+        });
+    }
+
+    console.log('A função calculateTotal() está sendo chamada.');
+    document.getElementById('total').textContent = 'R$ ' + total.toFixed(2);
+}
+
+  // Carregar os itens do carrinho ao carregar a página
+  window.onload = function() {
+      loadCartItems();
+      calculateTotal();
+  };
+</script>
+
+<script src="produtos.json"></script>
+<script src="assets/js/jquery.min.js"></script>
+<script src="assets/js/jquery.scrolly.min.js"></script>
+<script src="assets/js/skel.min.js"></script>
+<script src="assets/js/util.js"></script>
+<script src="assets/js/main.js"></script>
+
+</body>
+</html>

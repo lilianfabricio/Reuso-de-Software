@@ -1,0 +1,50 @@
+[
+    {
+        "id": 1,
+        "nome": "Creedence Clearwater Revival - Cosmos Factory",
+        "imagem": "https://www.londoncalling.com.br/imagens/produtos/NACLNDC2022.jpg",
+        "preco": 119.9
+    },
+    {
+        "id": 2,
+        "nome": "The Beatles - 1962-1966",
+        "imagem": "https://m.media-amazon.com/images/I/61PjnnFqWFL._AC_SX679_.jpg",
+        "preco": 169.9
+    },
+    {
+        "id": 3,
+        "nome": "Queen - Greatest Hits 3",
+        "imagem": "https://www.londoncalling.com.br/imagens/produtos/vinil21185.jpg",
+        "preco": 499.9
+    },
+    {
+        "id": 4,
+        "nome": "Arctic Monkeys - Favourite Worst Nightmare",
+        "imagem": "https://www.londoncalling.com.br/imagens/produtos/093624945796.jpg",
+        "preco": 229.9
+    },
+    {
+        "id": 5,
+        "nome": "The Beatles - 1",
+        "imagem": "https://www.londoncalling.com.br/imagens/produtos/nacl1670.jpg",
+        "preco": 49.9
+    },
+    {
+        "id": 6,
+        "nome": "The Beatles - Hard Day's Night",
+        "imagem": "https://www.londoncalling.com.br/imagens/produtos/CAP82413.jpg",
+        "preco": 149.9
+    },
+    {
+        "id": 7,
+        "nome": "Green Day - Insomniac",
+        "imagem": "https://www.londoncalling.com.br/imagens/produtos/RPRW46046.jpg",
+        "preco": 134.9
+    },
+    {
+        "id": 8,
+        "nome": "Green Day - Dookie",
+        "imagem": "https://www.londoncalling.com.br/imagens/produtos/093624850434.jpg",
+        "preco": 289.9
+    }
+]
